@@ -12,8 +12,9 @@
 # limitations under the License.
 # ==============================================================================
 import math
-from typing import Any, List, Union
 from functools import partial
+from typing import Any, List, Union
+
 import torch
 from torch import Tensor
 from torch import nn
@@ -23,7 +24,7 @@ from torchvision.ops.stochastic_depth import StochasticDepth
 from utils import make_divisible
 
 __all__ = [
-    "EfficientNet",
+    "EfficientNetV1",
     "efficientnet_v1_b0", "efficientnet_v1_b1", "efficientnet_v1_b2", "efficientnet_v1_b3", "efficientnet_v1_b4",
     "efficientnet_v1_b5", "efficientnet_v1_b6", "efficientnet_v1_b7",
 ]
@@ -128,7 +129,7 @@ class MBConv(nn.Module):
         return out
 
 
-class EfficientNet(nn.Module):
+class EfficientNetV1(nn.Module):
 
     def __init__(
             self,
@@ -139,7 +140,7 @@ class EfficientNet(nn.Module):
             dropout: float = 0.2,
             num_classes: int = 1000,
     ) -> None:
-        super(EfficientNet, self).__init__()
+        super(EfficientNetV1, self).__init__()
 
         features: List[nn.Module] = [Conv2dNormActivation(
             3,
@@ -240,49 +241,49 @@ class EfficientNet(nn.Module):
                 nn.init.zeros_(module.bias)
 
 
-def efficientnet_v1_b0(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.0, 1.0, 0.2, 0.2, **kwargs)
+def efficientnet_v1_b0(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.0, 1.0, 0.2, 0.2, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b1(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.0, 1.1, 0.2, 0.2, **kwargs)
+def efficientnet_v1_b1(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.0, 1.1, 0.2, 0.2, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b2(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.1, 1.2, 0.2, 0.3, **kwargs)
+def efficientnet_v1_b2(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.1, 1.2, 0.2, 0.3, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b3(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.2, 1.4, 0.2, 0.3, **kwargs)
+def efficientnet_v1_b3(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.2, 1.4, 0.2, 0.3, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b4(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.4, 1.8, 0.2, 0.4, **kwargs)
+def efficientnet_v1_b4(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.4, 1.8, 0.2, 0.4, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b5(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.6, 2.2, 0.2, 0.4, **kwargs)
+def efficientnet_v1_b5(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.6, 2.2, 0.2, 0.4, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b6(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 1.8, 2.6, 0.2, 0.5, **kwargs)
+def efficientnet_v1_b6(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 1.8, 2.6, 0.2, 0.5, **kwargs)
 
     return model
 
 
-def efficientnet_v1_b7(**kwargs: Any) -> EfficientNet:
-    model = EfficientNet(efficientnet_cfg, 2.0, 3.1, 0.2, 0.5, **kwargs)
+def efficientnet_v1_b7(**kwargs: Any) -> EfficientNetV1:
+    model = EfficientNetV1(efficientnet_cfg, 2.0, 3.1, 0.2, 0.5, **kwargs)
 
     return model
