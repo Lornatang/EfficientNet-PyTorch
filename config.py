@@ -26,14 +26,14 @@ device = torch.device("cuda", 0)
 # Turning on when the image size does not change during training can speed up training
 cudnn.benchmark = True
 # Model arch name
-model_arch_name = "efficientnet_v1_b0"
+model_arch_name = "efficientnet_v1_b2"
 # Model normalization parameters
 model_mean_parameters = [0.485, 0.456, 0.406]
 model_std_parameters = [0.229, 0.224, 0.225]
 # Model number class
 model_num_classes = 1000
 # Current configuration parameter method
-mode = "train"
+mode = "test"
 # Experiment name, easy to save weights and log files
 exp_name = f"{model_arch_name}-ImageNet_1K"
 
@@ -79,11 +79,11 @@ if mode == "test":
     test_image_dir = "./data/ImageNet_1K/ILSVRC2012_img_val"
 
     # Test dataloader parameters
-    image_size = 224
+    image_size = 288
     batch_size = 256
     num_workers = 4
 
     # How many iterations to print the testing result
     test_print_frequency = 20
 
-    model_weights_path = "./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar"
+    model_weights_path = "./results/pretrained_models/efficientnet_v1_b2-ImageNet_1K-6a4d8d38.pth.tar"

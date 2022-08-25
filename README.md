@@ -1,12 +1,13 @@
-# SqueezeNet-PyTorch
+# EfficientNetV1-PyTorch
 
 ## Overview
 
-This repository contains an op-for-op PyTorch reimplementation of [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size](https://arxiv.org/pdf/1602.07360v4.pdf).
+This repository contains an op-for-op PyTorch reimplementation
+of [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](https://arxiv.org/pdf/1905.11946v5.pdf).
 
 ## Table of contents
 
-- [SqueezeNet-PyTorch](#squeezenet-pytorch)
+- [EfficientNetV1-PyTorch](#efficientnetv1-pytorch)
     - [Overview](#overview)
     - [Table of contents](#table-of-contents)
     - [Download weights](#download-weights)
@@ -18,7 +19,7 @@ This repository contains an op-for-op PyTorch reimplementation of [SqueezeNet: A
     - [Result](#result)
     - [Contributing](#contributing)
     - [Credit](#credit)
-        - [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size](#squeezenet-alexnet-level-accuracy-with-50x-fewer-parameters-and-05mb-model-size)
+        - [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](#efficientnet-rethinking-model-scaling-for-convolutional-neural-networks)
 
 ## Download weights
 
@@ -40,12 +41,12 @@ Both training and testing only need to modify the `config.py` file.
 
 ### Test
 
-- line 29: `model_arch_name` change to `squeezenet`.
+- line 29: `model_arch_name` change to `efficientnet_v1_b0`.
 - line 31: `model_mean_parameters` change to `[0.485, 0.456, 0.406]`.
 - line 32: `model_std_parameters` change to `[0.229, 0.224, 0.225]`.
 - line 34: `model_num_classes` change to `1000`.
 - line 36: `mode` change to `test`.
-- line 89: `model_weights_path` change to `./results/pretrained_models/SqueezeNet-ImageNet_1K-145ddc1c.pth.tar`.
+- line 89: `model_weights_path` change to `./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar`.
 
 ```bash
 python3 test.py
@@ -53,12 +54,12 @@ python3 test.py
 
 ### Train model
 
-- line 29: `model_arch_name` change to `squeezenet`.
+- line 29: `model_arch_name` change to `efficientnet_v1_b0`.
 - line 31: `model_mean_parameters` change to `[0.485, 0.456, 0.406]`.
 - line 32: `model_std_parameters` change to `[0.229, 0.224, 0.225]`.
 - line 34: `model_num_classes` change to `1000`.
 - line 36: `mode` change to `train`.
-- line 50: `pretrained_model_weights_path` change to `./results/pretrained_models/SqueezeNet-ImageNet_1K-145ddc1c.pth.tar`.
+- line 50: `pretrained_model_weights_path` change to `./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar`.
 
 ```bash
 python3 train.py
@@ -66,12 +67,12 @@ python3 train.py
 
 ### Resume train model
 
-- line 29: `model_arch_name` change to `squeezenet`.
+- line 29: `model_arch_name` change to `efficientnet_v1_b0`.
 - line 31: `model_mean_parameters` change to `[0.485, 0.456, 0.406]`.
 - line 32: `model_std_parameters` change to `[0.229, 0.224, 0.225]`.
 - line 34: `model_num_classes` change to `1000`.
 - line 36: `mode` change to `train`.
-- line 53: `resume` change to `./samples/squeezenet-ImageNet_1K/epoch_xxx.pth.tar`.
+- line 53: `resume` change to `./samples/efficientnet_v1_b0-ImageNet_1K/epoch_xxx.pth.tar`.
 
 ```bash
 python3 train.py
@@ -79,16 +80,23 @@ python3 train.py
 
 ## Result
 
-Source of original paper results: [https://arxiv.org/pdf/1602.07360v4.pdf](https://arxiv.org/pdf/1602.07360v4.pdf))
+Source of original paper results: [https://arxiv.org/pdf/1905.11946v5.pdf](https://arxiv.org/pdf/1905.11946v5.pdf))
 
 In the following table, the top-x error value in `()` indicates the result of the project, and `-` indicates no test.
 
-|         Model          |   Dataset   | Top-1 error (val) | Top-5 error (val) |
-|:----------------------:|:-----------:|:-----------------:|:-----------------:|
-|       squeezenet       | ImageNet_1K | 42.5%(**26.08%**) | 19.7%(**19.6%**)  |
+|       Model        |   Dataset   | Top-1 error (val) | Top-5 error (val) |
+|:------------------:|:-----------:|:-----------------:|:-----------------:|
+| efficientnet_v1_b0 | ImageNet_1K | 22.9%(**26.11%**) |  6.7%(**8.4%**)   |
+| efficientnet_v1_b1 | ImageNet_1K | 20.9%(**21.33%**) |  5.6%(**5.7%**)   |
+| efficientnet_v1_b2 | ImageNet_1K | 19.9%(**26.08%**) |  5.1%(**19.6%**)  |
+| efficientnet_v1_b3 | ImageNet_1K | 18.4%(**26.08%**) |  4.3%(**19.6%**)  |
+| efficientnet_v1_b4 | ImageNet_1K | 17.1%(**26.08%**) |  3.6%(**19.6%**)  |
+| efficientnet_v1_b5 | ImageNet_1K | 16.4%(**26.08%**) |  3.3%(**19.6%**)  |
+| efficientnet_v1_b6 | ImageNet_1K | 16.0%(**26.08%**) |  3.2%(**19.6%**)  |
+| efficientnet_v1_b7 | ImageNet_1K | 15.7%(**26.08%**) |  3.0%(**19.6%**)  |
 
 ```bash
-# Download `SqueezeNet-ImageNet_1K-145ddc1c.pth.tar` weights to `./results/pretrained_models`
+# Download `efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar` weights to `./results/pretrained_models`
 # More detail see `README.md<Download weights>`
 python3 ./inference.py 
 ```
@@ -100,8 +108,8 @@ Input:
 Output:
 
 ```text
-Build `squeezenet` model successfully.
-Load `squeezenet` model weights `/SqueezeNet-PyTorch/results/pretrained_models/SqueezeNet-ImageNet_1K-145ddc1c.pth.tar` successfully.
+Build `efficientnet_v1_b0` model successfully.
+Load `efficientnet_v1_b0` model weights `/EfficientNetV1-PyTorch/results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar` successfully.
 tench, Tinca tinca                                                          (95.10%)
 barracouta, snoek                                                           (2.01%)
 reel                                                                        (0.10%)
@@ -118,29 +126,34 @@ I look forward to seeing what the community does with these models!
 
 ### Credit
 
-#### SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size
+#### EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
 
-*Forrest N. Iandola, Song Han, Matthew W. Moskewicz, Khalid Ashraf, William J. Dally, Kurt Keutzer*
+*Mingxing Tan, Quoc V. Le*
 
 ##### Abstract
 
-Recent research on deep neural networks has focused primarily on improving accuracy. For a given accuracy level, it is
-typically possible to identify multiple DNN architectures that achieve that accuracy level. With equivalent accuracy,
-smaller DNN architectures offer at least three advantages: (1) Smaller DNNs require less communication across servers
-during distributed training. (2) Smaller DNNs require less bandwidth to export a new model from the cloud to an
-autonomous car. (3) Smaller DNNs are more feasible to deploy on FPGAs and other hardware with limited memory. To provide
-all of these advantages, we propose a small DNN architecture called SqueezeNet. SqueezeNet achieves AlexNet-level
-accuracy on ImageNet with 50x fewer parameters. Additionally, with model compression techniques we are able to compress
-SqueezeNet to less than 0.5MB (510x smaller than AlexNet).
-The SqueezeNet architecture is available for download here: [this https URL](https://github.com/DeepScale/SqueezeNet)
+Convolutional Neural Networks (ConvNets) are commonly developed at a fixed resource budget, and then scaled up for
+better accuracy if more resources are available. In this paper, we systematically study model scaling and identify that
+carefully balancing network depth, width, and resolution can lead to better performance. Based on this observation, we
+propose a new scaling method that uniformly scales all dimensions of depth/width/resolution using a simple yet highly
+effective compound coefficient. We demonstrate the effectiveness of this method on scaling up MobileNets and ResNet.
+To go even further, we use neural architecture search to design a new baseline network and scale it up to obtain a
+family of models, called EfficientNets, which achieve much better accuracy and efficiency than previous ConvNets. In
+particular, our EfficientNet-B7 achieves state-of-the-art 84.3% top-1 accuracy on ImageNet, while being 8.4x smaller and
+6.1x faster on inference than the best existing ConvNet. Our EfficientNets also transfer well and achieve
+state-of-the-art accuracy on CIFAR-100 (91.7%), Flowers (98.8%), and 3 other transfer learning datasets, with an order
+of magnitude fewer parameters. Source code is
+at [this https URL](https//github.com/tensorflow/tpu/tree/master/models/official/efficientnet.)
 
-[[Paper]](https://arxiv.org/pdf/1602.07360v4.pdf)
+[[Paper]](https://arxiv.org/pdf/1905.11946v5.pdf)
 
 ```bibtex
-@article{SqueezeNet,
-    Author = {Forrest N. Iandola and Song Han and Matthew W. Moskewicz and Khalid Ashraf and William J. Dally and Kurt Keutzer},
-    Title = {SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and $<$0.5MB model size},
-    Journal = {arXiv:1602.07360},
-    Year = {2016}
+@inproceedings{tan2019efficientnet,
+  title={Efficientnet: Rethinking model scaling for convolutional neural networks},
+  author={Tan, Mingxing and Le, Quoc},
+  booktitle={International conference on machine learning},
+  pages={6105--6114},
+  year={2019},
+  organization={PMLR}
 }
 ```

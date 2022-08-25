@@ -144,7 +144,7 @@ class EfficientNetV1(nn.Module):
 
         features: List[nn.Module] = [Conv2dNormActivation(
             3,
-            arch_cfg[0][3],
+            make_divisible(arch_cfg[0][3] * width_mult, 8, None),
             kernel_size=3,
             stride=2,
             padding=1,
@@ -184,7 +184,7 @@ class EfficientNetV1(nn.Module):
             features.append(nn.Sequential(*stage))
 
         # building last several layers
-        last_in_channels = arch_cfg[-1][4]
+        last_in_channels = make_divisible(arch_cfg[-1][4] * width_mult, 8, None)
         last_out_channels = int(4 * last_in_channels)
         features.append(
             Conv2dNormActivation(
