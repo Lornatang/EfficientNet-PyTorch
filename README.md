@@ -2,9 +2,7 @@
 
 ## Overview
 
-This repository contains an op-for-op PyTorch reimplementation
-of [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size
-](https://arxiv.org/pdf/1602.07360v4.pdf).
+This repository contains an op-for-op PyTorch reimplementation of [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size](https://arxiv.org/pdf/1602.07360v4.pdf).
 
 ## Table of contents
 
@@ -87,7 +85,7 @@ In the following table, the top-x error value in `()` indicates the result of th
 
 |         Model          |   Dataset   | Top-1 error (val) | Top-5 error (val) |
 |:----------------------:|:-----------:|:-----------------:|:-----------------:|
-|       squeezenet       | ImageNet_1K | 42.5%(**41.9%**)  | 19.7%(**19.6%**)  |
+|       squeezenet       | ImageNet_1K | 42.5%(**26.08%**) | 19.7%(**19.6%**)  |
 
 ```bash
 # Download `SqueezeNet-ImageNet_1K-145ddc1c.pth.tar` weights to `./results/pretrained_models`
@@ -104,11 +102,11 @@ Output:
 ```text
 Build `squeezenet` model successfully.
 Load `squeezenet` model weights `/SqueezeNet-PyTorch/results/pretrained_models/SqueezeNet-ImageNet_1K-145ddc1c.pth.tar` successfully.
-tench, Tinca tinca                                                          (80.22%)
-barracouta, snoek                                                           (15.18%)
-bolete                                                                      (0.68%)
-armadillo                                                                   (0.67%)
-reel                                                                        (0.38%)
+tench, Tinca tinca                                                          (95.10%)
+barracouta, snoek                                                           (2.01%)
+reel                                                                        (0.10%)
+gar, garfish, garpike, billfish, Lepisosteus osseus                         (0.06%)
+armadillo                                                                   (0.04%)
 ```
 
 ## Contributing

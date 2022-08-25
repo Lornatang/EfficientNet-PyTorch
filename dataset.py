@@ -23,6 +23,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from torchvision.datasets.folder import find_classes
 from torchvision.transforms import TrivialAugmentWide
+from torchvision.transforms import InterpolationMode as IMode
 
 import imgproc
 
@@ -64,7 +65,7 @@ class ImageDataset(Dataset):
         if self.mode == "Train":
             # Use PyTorch's own data enhancement to enlarge and enhance data
             self.pre_transform = transforms.Compose([
-                transforms.RandomResizedCrop(self.image_size),
+                transforms.RandomResizedCrop(self.image_size, interpolation=IMode.BICUBIC),
                 TrivialAugmentWide(),
                 transforms.RandomRotation([0, 270]),
                 transforms.RandomHorizontalFlip(0.5),
@@ -73,7 +74,7 @@ class ImageDataset(Dataset):
         elif self.mode == "Valid" or self.mode == "Test":
             # Use PyTorch's own data enhancement to enlarge and enhance data
             self.pre_transform = transforms.Compose([
-                transforms.Resize(256),
+                transforms.Resize(256, interpolation=IMode.BICUBIC),
                 transforms.CenterCrop([self.image_size, self.image_size]),
             ])
         else:
