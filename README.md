@@ -46,7 +46,7 @@ Both training and testing only need to modify the `config.py` file.
 - line 32: `model_std_parameters` change to `[0.229, 0.224, 0.225]`.
 - line 34: `model_num_classes` change to `1000`.
 - line 36: `mode` change to `test`.
-- line 89: `model_weights_path` change to `./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar`.
+- line 91: `model_weights_path` change to `./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar`.
 
 ```bash
 python3 test.py
@@ -59,7 +59,7 @@ python3 test.py
 - line 32: `model_std_parameters` change to `[0.229, 0.224, 0.225]`.
 - line 34: `model_num_classes` change to `1000`.
 - line 36: `mode` change to `train`.
-- line 50: `pretrained_model_weights_path` change to `./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar`.
+- line 51: `pretrained_model_weights_path` change to `./results/pretrained_models/efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar`.
 
 ```bash
 python3 train.py
@@ -72,7 +72,7 @@ python3 train.py
 - line 32: `model_std_parameters` change to `[0.229, 0.224, 0.225]`.
 - line 34: `model_num_classes` change to `1000`.
 - line 36: `mode` change to `train`.
-- line 53: `resume` change to `./samples/efficientnet_v1_b0-ImageNet_1K/epoch_xxx.pth.tar`.
+- line 54: `resume` change to `./samples/efficientnet_v1_b0-ImageNet_1K/epoch_xxx.pth.tar`.
 
 ```bash
 python3 train.py
