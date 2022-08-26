@@ -36,7 +36,8 @@ def build_model() -> nn.Module:
 
 def load_dataset() -> CUDAPrefetcher:
     test_dataset = ImageDataset(config.test_image_dir,
-                                config.image_size,
+                                config.resize_size,
+                                config.crop_size,
                                 config.model_mean_parameters,
                                 config.model_std_parameters,
                                 "Test")

@@ -86,14 +86,14 @@ In the following table, the top-x error value in `()` indicates the result of th
 
 |       Model        |   Dataset   | Top-1 error (val) | Top-5 error (val) |
 |:------------------:|:-----------:|:-----------------:|:-----------------:|
-| efficientnet_v1_b0 | ImageNet_1K | 22.9%(**26.11%**) |  6.7%(**8.4%**)   |
-| efficientnet_v1_b1 | ImageNet_1K | 20.9%(**21.33%**) |  5.6%(**5.7%**)   |
-| efficientnet_v1_b2 | ImageNet_1K | 19.9%(**26.08%**) |  5.1%(**19.6%**)  |
-| efficientnet_v1_b3 | ImageNet_1K | 18.4%(**26.08%**) |  4.3%(**19.6%**)  |
-| efficientnet_v1_b4 | ImageNet_1K | 17.1%(**26.08%**) |  3.6%(**19.6%**)  |
-| efficientnet_v1_b5 | ImageNet_1K | 16.4%(**26.08%**) |  3.3%(**19.6%**)  |
-| efficientnet_v1_b6 | ImageNet_1K | 16.0%(**26.08%**) |  3.2%(**19.6%**)  |
-| efficientnet_v1_b7 | ImageNet_1K | 15.7%(**26.08%**) |  3.0%(**19.6%**)  |
+| efficientnet_v1_b0 | ImageNet_1K | 22.9%(**26.1%**)  |  6.7%(**8.4%**)   |
+| efficientnet_v1_b1 | ImageNet_1K | 20.9%(**21.3%**)  |  5.6%(**5.7%**)   |
+| efficientnet_v1_b2 | ImageNet_1K | 19.9%(**22.1%**)  |  5.1%(**6.4%**)   |
+| efficientnet_v1_b3 | ImageNet_1K | 18.4%(**18.9%**)  |  4.3%(**4.3%**)   |
+| efficientnet_v1_b4 | ImageNet_1K | 17.1%(**16.9%**)  |  3.6%(**3.5%**)   |
+| efficientnet_v1_b5 | ImageNet_1K | 16.4%(**16.4%**)  |  3.3%(**3.3%**)   |
+| efficientnet_v1_b6 | ImageNet_1K | 16.0%(**16.0%**)  |  3.2%(**3.2%**)   |
+| efficientnet_v1_b7 | ImageNet_1K | 15.7%(**15.7%**)  |  3.0%(**3.1%**)   |
 
 ```bash
 # Download `efficientnet_v1_b0-ImageNet_1K-54492891.pth.tar` weights to `./results/pretrained_models`

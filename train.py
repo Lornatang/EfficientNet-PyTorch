@@ -123,12 +123,14 @@ def main():
 def load_dataset() -> [CUDAPrefetcher, CUDAPrefetcher]:
     # Load train, test and valid datasets
     train_dataset = ImageDataset(config.train_image_dir,
-                                 config.image_size,
+                                 config.resize_size,
+                                 config.crop_size,
                                  config.model_mean_parameters,
                                  config.model_std_parameters,
                                  "Train")
     valid_dataset = ImageDataset(config.valid_image_dir,
-                                 config.image_size,
+                                 config.resize_size,
+                                 config.crop_size,
                                  config.model_mean_parameters,
                                  config.model_std_parameters,
                                  "Valid")

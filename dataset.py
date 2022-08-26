@@ -26,6 +26,7 @@ from torchvision.transforms import TrivialAugmentWide
 from torchvision.transforms import InterpolationMode as IMode
 
 import imgproc
+import config
 
 __all__ = [
     "ImageDataset",
@@ -47,25 +48,28 @@ class ImageDataset(Dataset):
 
     Args:
         image_dir (str): Train/Valid dataset address.
-        image_size (int): Image size.
+        resize_size (int): Resized image size.
+        crop_size (int): Crop image size.
         mode (str): Data set loading method, the training data set is for data enhancement,
             and the verification data set is not for data enhancement.
     """
 
-    def __init__(self, image_dir: str, image_size: int, mean: list, std: list, mode: str) -> None:
+    def __init__(self, image_dir: str, resize_size: int, crop_size: int, mean: list, std: list, mode: str) -> None:
         super(ImageDataset, self).__init__()
         # Iterate over all image paths
         self.image_file_paths = glob(f"{image_dir}/*/*")
         # Form image class label pairs by the folder where the image is located
         _, self.class_to_idx = find_classes(image_dir)
-        self.image_size = image_size
+        self.resize_size = resize_size
+        self.crop_size = crop_size
         self.mode = mode
         self.delimiter = delimiter
 
         if self.mode == "Train":
             # Use PyTorch's own data enhancement to enlarge and enhance data
             self.pre_transform = transforms.Compose([
-                transforms.RandomResizedCrop(self.image_size, interpolation=IMode.BICUBIC),
+                transforms.Resize([self.resize_size, self.resize_size], interpolation=IMode.BICUBIC),
+                transforms.RandomCrop([self.crop_size, self.crop_size]),
                 TrivialAugmentWide(),
                 transforms.RandomRotation([0, 270]),
                 transforms.RandomHorizontalFlip(0.5),
@@ -74,8 +78,8 @@ class ImageDataset(Dataset):
         elif self.mode == "Valid" or self.mode == "Test":
             # Use PyTorch's own data enhancement to enlarge and enhance data
             self.pre_transform = transforms.Compose([
-                transforms.Resize(256, interpolation=IMode.BICUBIC),
-                transforms.CenterCrop([self.image_size, self.image_size]),
+                transforms.Resize([self.resize_size, self.resize_size], interpolation=IMode.BICUBIC),
+                transforms.CenterCrop([self.crop_size, self.crop_size]),
             ])
         else:
             raise "Unsupported data read type. Please use `Train` or `Valid` or `Test`"

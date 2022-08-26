@@ -33,7 +33,7 @@ model_std_parameters = [0.229, 0.224, 0.225]
 # Model number class
 model_num_classes = 1000
 # Current configuration parameter method
-mode = "test"
+mode = "train"
 # Experiment name, easy to save weights and log files
 exp_name = f"{model_arch_name}-ImageNet_1K"
 
@@ -42,7 +42,8 @@ if mode == "train":
     train_image_dir = "./data/ImageNet_1K/ILSVRC2012_img_train"
     valid_image_dir = "./data/ImageNet_1K/ILSVRC2012_img_val"
 
-    image_size = 224
+    resize_size = 256
+    crop_size = 224
     batch_size = 128
     num_workers = 4
 
@@ -79,8 +80,9 @@ if mode == "test":
     test_image_dir = "./data/ImageNet_1K/ILSVRC2012_img_val"
 
     # Test dataloader parameters
-    image_size = 288
-    batch_size = 256
+    resize_size = 456
+    crop_size = 456
+    batch_size = 128
     num_workers = 4
 
     # How many iterations to print the testing result
